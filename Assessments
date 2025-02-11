@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindSpring - Mental Wellness Platform</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+     /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      background-color: rgba(255, 255, 255, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: #2c3e50;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #FFB6B9;
+      transform: translateY(-3px);
+    }
+
+    .navbar .btn-login {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #FFB6B9;
+      color: #fff;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .navbar .btn-login:hover {
+      background-color: #ff9fa3;
+      transform: scale(1.05);
+    }
+
+
+    /* Assessment-specific styles */
+    .assessment-container {
+      padding: 50px 0;
+      background: linear-gradient(135deg, #A2D5F2 0%, #C7F0BD 100%);
+      min-height: 100vh;
+    }
+
+    .assessment-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .assessment-progress {
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background-color: #FFB6B9;
+      width: 0;
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .question-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .question-number {
+      color: #FFB6B9;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .rating-scale {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin: 25px 0;
+    }
+
+    .rating-btn {
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      background: white;
+    }
+
+    .rating-btn:hover {
+      border-color: #FFB6B9;
+      background-color: #fff5f5;
+    }
+
+    .rating-btn.active {
+      border-color: #FFB6B9;
+      background-color: #FFB6B9;
+      color: white;
+    }
+
+    .text-input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      margin-top: 15px;
+      resize: vertical;
+    }
+
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+
+    .disclaimer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">MindSpring</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="#" class="btn-login">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="assessment-container">
+    <div class="container">
+      <div class="assessment-header">
+        <h1>Mental Wellness Assessment</h1>
+        <p>This 12-question assessment helps us understand your current mental state. All responses are confidential.</p>
+      </div>
+
+      <div class="assessment-progress">
+        <div class="progress-bar"></div>
+      </div>
+
+      <form id="assessmentForm">
+        <!-- Question 1 -->
+        <div class="question-card">
+          <div class="question-number">Question 1 of 12</div>
+          <h2>How often have you felt down, depressed, or hopeless in the past 2 weeks??</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Never</div>
+            <div class="rating-btn" data-value="2">Rarely</div>
+            <div class="rating-btn" data-value="3">Some Days</div>
+            <div class="rating-btn" data-value="4">Most Days</div>
+            <div class="rating-btn" data-value="5">Constantly</div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-card">
+          <div class="question-number">Question 2 of 12</div>
+          <h2>When anxious, how intense do your feelings typically become??</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Mild</div>
+            <div class="rating-btn" data-value="2">Moderate</div>
+            <div class="rating-btn" data-value="3">Severe</div>
+            <div class="rating-btn" data-value="4">Deliberating</div>
+            <div class="rating-btn" data-value="5">Panic Attacks</div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-card">
+          <div class="question-number">Question 3 of 12</div>
+          <h2>How rested do you typically feel after sleeping??</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Very Rested</div>
+            <div class="rating-btn" data-value="2">Somewhat Rested</div>
+            <div class="rating-btn" data-value="3">Neutral</div>
+            <div class="rating-btn" data-value="4">Somewhat Tired</div>
+            <div class="rating-btn" data-value="5">Very Tired</div>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-card">
+          <div class="question-number">Question 4 of 12</div>
+          <h2>How often do you feel too fatigued for daily activities?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Never</div>
+            <div class="rating-btn" data-value="2">Rarely</div>
+            <div class="rating-btn" data-value="3">Sometimes</div>
+            <div class="rating-btn" data-value="4">Often</div>
+            <div class="rating-btn" data-value="5">Always</div>
+          </div>
+        </div>
+
+<!-- Question 5 -->
+        <div class="question-card">
+          <div class="question-number">Question 5 of 12</div>
+          <h2>How difficult is focusing on tasks compared to 6 months ago?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Much Easier</div>
+            <div class="rating-btn" data-value="2">Somewhat Easier</div>
+            <div class="rating-btn" data-value="3">About the Same</div>
+            <div class="rating-btn" data-value="4">Somewhat More Difficult</div>
+            <div class="rating-btn" data-value="5">Much More Difficult</div>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="question-card">
+          <div class="question-number">Question 6 of 12</div>
+          <h2>How often do you feel worthless or excessively guilty?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Never</div>
+            <div class="rating-btn" data-value="2">Rarely</div>
+            <div class="rating-btn" data-value="3">Sometimes</div>
+            <div class="rating-btn" data-value="4">Often</div>
+            <div class="rating-btn" data-value="5">Always</div>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="question-card">
+          <div class="question-number">Question 7 of 12</div>
+          <h2>How interested are you in social interactions?</h2>
+          <div class="rating-scale">
+           <div class="rating-btn" data-value="1">Very Interested</div>
+           <div class="rating-btn" data-value="2">Somewhat Interested</div>
+           <div class="rating-btn" data-value="3">Neutral</div>
+           <div class="rating-btn" data-value="4">Somewhat Uninterested</div>
+           <div class="rating-btn" data-value="5">Very Uninterested</div>
+          </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div class="question-card">
+          <div class="question-number">Question 8 of 12</div>
+          <h2>Has your eating pattern changed significantly recently?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">No Change</div>
+            <div class="rating-btn" data-value="2">Slight Change</div>
+            <div class="rating-btn" data-value="3">Moderate Change</div>
+            <div class="rating-btn" data-value="4">Significant Change</div>
+            <div class="rating-btn" data-value="5">Extreme Change</div>
+          </div>
+        </div>
+         <!-- Question 9 -->
+        <div class="question-card">
+          <div class="question-number">Question 9 of 12</div>
+          <h2>How hopeful do you feel about the next 6 months?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Very Hopeful </div>
+            <div class="rating-btn" data-value="2">Somewhat Hopeful</div>
+            <div class="rating-btn" data-value="3">Neutral</div>
+            <div class="rating-btn" data-value="4">Somewhat Doubtful</div>
+            <div class="rating-btn" data-value="5">Very Doubtful</div>
+          </div>
+        </div>
+
+        <!-- Question 10 -->
+        <div class="question-card">
+          <div class="question-number">Question 10 of 12</div>
+          <h2>How effectively do you manage stressful situations?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Very Effectively</div>
+            <div class="rating-btn" data-value="2">Somewhat Effectively</div>
+            <div class="rating-btn" data-value="3">Moderately Effectively</div>
+            <div class="rating-btn" data-value="4">Somewhat Ineffectively</div>
+            <div class="rating-btn" data-value="5">Very Ineffectively</div>
+          </div>
+        </div>
+
+        <!-- Question 11 -->
+        <div class="question-card">
+          <div class="question-number">Question 11 of 12</div>
+          <h2>How often do you experience unexplained: headaches/stomachaches/muscle tension?</h2>
+          <div class="rating-scale">
+            <div class="rating-btn" data-value="1">Never</div>
+            <div class="rating-btn" data-value="2">Rarely</div>
+            <div class="rating-btn" data-value="3">Sometimes</div>
+            <div class="rating-btn" data-value="4">Often</div>
+
+    <div class="rating-btn" data-value="5">Always </div>
+          </div>
+        </div>
+        <!-- Add more questions following the same pattern -->
+
+        <!-- Open-ended Question -->
+        <div class="question-card">
+          <div class="question-number">Question 12 of 12</div>
+          <h2>Is there anything else you'd like to share about your current mental state?</h2>
+          <textarea class="text-input" rows="4" placeholder="Your thoughts..."></textarea>
+        </div>
+
+        <div class="nav-buttons">
+          <button type="button" class="btn-secondary" id="prevBtn">Previous</button>
+          <button type="button" class="btn-primary" id="nextBtn">Next</button>
+        </div>
+      </form>
+
+      <div class="disclaimer">
+        Note: This assessment is not a diagnostic tool. Always consult a qualified professional for medical advice.
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+  const answered = document.querySelectorAll('.rating-btn.active').length;
+  if (answered < SCORED_QUESTIONS) { // Use constant from top
+    alert('Please answer all questions before submitting');
+    return false;
+  }
+  return true;
+}
+// Assessment Logic
+ let currentQuestion = 0;
+    const questions = document.querySelectorAll('.question-card');
+    const progressBar = document.querySelector('.progress-bar');
+    const totalQuestions = questions.length;
+    const SCORED_QUESTIONS = 11;
+    function updateProgress() {
+       const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => {
+        q.style.display = i === index ? 'block' : 'none';
+      });
+      updateProgress();
+    }
+
+    // Rating Button Interactions
+    document.querySelectorAll('.rating-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.parentNode.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Navigation Controls
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      if (currentQuestion < totalQuestions - 1) {
+        currentQuestion++;
+        showQuestion(currentQuestion);
+      } else {
+        if (validateForm()) {
+          calculateAndShowScore();
+        }
+      }
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        showQuestion(currentQuestion);
+      }
+    });
+    function calculateAndShowScore() {
+      let totalScore = 0;
+      document.querySelectorAll('.rating-btn.active').forEach(btn => {
+        totalScore += parseInt(btn.dataset.value);
+      });
+      
+      window.location.href = `results.html?score=${totalScore}`;
+    }
+
+    function validateForm() {
+      const answered = document.querySelectorAll('.rating-btn.active').length;
+      if (answered < SCORED_QUESTIONS) {
+        alert('Please answer all questions before submitting');
+        return false;
+      }
+      return true;
+    }
+
+    function updateButtonText() {
+      const nextBtn = document.getElementById('nextBtn');
+      nextBtn.textContent = currentQuestion === totalQuestions - 1 ? 'Submit' : 'Next';
+    }
+
+    // Initialize
+    showQuestion(0);
+    updateButtonText();
+</script>
