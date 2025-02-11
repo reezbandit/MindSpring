@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - MindSpring</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar .nav-links a {
+      color: #2c3e50;
+      transition: color 0.3s ease;
+    }
+
+    .navbar .nav-links a:hover {
+      color: #FFB6B9;
+    }
+
+    .navbar .btn-login {
+      padding: 10px 20px;
+      border-radius: 5px;
+      background-color: #FFB6B9;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    .navbar .btn-login:hover {
+      background-color: #ff9fa3;
+    }
+
+    /* About Us Section */
+    .about-us {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .about-us h1 {
+      margin-bottom: 20px;
+    }
+
+    .about-us p {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      text-align: left;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 40px 0;
+      text-align: center;
+    }
+
+    .footer-links {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      margin: 0 10px;
+      color: #fff;
+    }
+
+    .social-media img {
+      width: 30px;
+      margin: 0 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-media img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(230, 230, 250, 0.8);
+    }
+
+    .footer p {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">MindSpring</div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="features.html">Features</a>
+        <a href="#" class="btn-login">Login</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Us Section -->
+  <section class="about-us">
+    <div class="container">
+      <h1>About Us</h1>
+      <p>
+        MindSpring is a cutting-edge mental wellness platform designed to revolutionize mental healthcare for young people. 
+        By leveraging the power of AI, we provide proactive, personalized, and stigma-free mental health support to university 
+        students and young professionals. Our mission is to empower individuals to take control of their mental well-being and 
+        create more supportive environments.
+      </p>
+      <p>
+        Founded in 2025, MindSpring combines AI-powered assessments with personalized interventions, making mental healthcare 
+        accessible, data-driven, and effective. We are committed to reducing stigma, improving access, and fostering a culture 
+        of mental wellness.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="#">Features</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <div class="social-media">
+        <a href="#"><img src="icon-instagram.svg" alt="Instagram"></a>
+        <a href="#"><img src="icon-linkedin.svg" alt="LinkedIn"></a>
+        <a href="#"><img src="icon-twitter.svg" alt="Twitter"></a>
+      </div>
+      <p>&copy; 2025 MindSpring. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
